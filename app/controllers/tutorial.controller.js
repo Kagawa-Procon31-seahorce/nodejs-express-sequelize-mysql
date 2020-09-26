@@ -47,11 +47,28 @@ exports.create = (req, res) => {
 };
 
 // Retrieve all Tutorials from the database.
-exports.findAll = (req, res) => {
+exports.findTitle = (req, res) => {
   const user_id = req.query.user_id;
   var condition = user_id ? { user_id: { [Op.like]: `%${user_id}%` } } : null;
 
-  Tutorial.findAll({ where: condition })
+  Tutorial.findTitle({ where: condition })
+    .then(data => {
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving tutorials."
+      });
+    });
+};
+
+// Retrieve all Tutorials from the database.
+exports.findFrom = (req, res) => {
+  const user_id = req.body.from_port_code;
+  var condition = from_port_code ? { user_id: { [Op.like]: `%${from_port_code}%` } } : null;
+
+  Tutorial.findFrom({ where: condition })
     .then(data => {
       res.send(data);
     })
@@ -64,21 +81,6 @@ exports.findAll = (req, res) => {
 };
 
 // Find a single Tutorial with an id
-exports.findOne = (req, res) => {
-  const id = req.params.id;
-
-  Tutorial.findByPk(id)
-    .then(data => {
-      res.send(data);
-    })
-    .catch(err => {
-      res.status(500).send({
-        message: "Error retrieving Tutorial with id=" + id
-      });
-    });
-};
-
-// Find reservations with a from id
 exports.findOne = (req, res) => {
   const id = req.params.id;
 
