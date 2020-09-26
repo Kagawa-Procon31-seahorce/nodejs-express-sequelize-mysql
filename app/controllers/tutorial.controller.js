@@ -78,21 +78,6 @@ exports.findOne = (req, res) => {
     });
 };
 
-// Find reservations with a from id
-exports.findOne = (req, res) => {
-  const id = req.params.id;
-
-  Tutorial.findByPk(id)
-    .then(data => {
-      res.send(data);
-    })
-    .catch(err => {
-      res.status(500).send({
-        message: "Error retrieving Tutorial with id=" + id
-      });
-    });
-};
-
 // Update a Tutorial by the id in the request
 exports.update = (req, res) => {
   const id = req.params.id;
