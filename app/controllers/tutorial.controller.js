@@ -14,6 +14,7 @@ exports.create = (req, res) => {
   }
 
   // Create a Tutorial
+  // id, createAt, updateAtは除外
   const tutorial = {
     user_id: req.body.user_id,
     to_port_code: req.body.to_port_code,
@@ -27,9 +28,9 @@ exports.create = (req, res) => {
     price: null,
     allocation_code: null,
     cancel_status: 0,
-    captain_code: 0,
-    boat_code: 0,
-    taxi_company_code: 0
+    captain_code: null,
+    boat_code: null,
+    taxi_company_code: null
   };
 
   // Save Tutorial in the database
