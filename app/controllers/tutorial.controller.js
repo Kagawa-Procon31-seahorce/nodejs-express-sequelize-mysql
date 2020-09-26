@@ -64,6 +64,7 @@ exports.findTitle = (req, res) => {
 };
 
 // Retrieve all Tutorials from the database.
+/*
 exports.findFrom = (req, res) => {
   const user_id = req.body.from_port_code;
   var condition = from_port_code ? { user_id: { [Op.like]: `%${from_port_code}%` } } : null;
@@ -79,6 +80,7 @@ exports.findFrom = (req, res) => {
       });
     });
 };
+*/
 
 // Find a single Tutorial with an id
 exports.findOne = (req, res) => {
