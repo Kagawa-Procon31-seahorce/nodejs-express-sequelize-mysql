@@ -47,11 +47,11 @@ exports.create = (req, res) => {
 };
 
 // Retrieve all Tutorials from the database.
-exports.findTitle = (req, res) => {
+exports.findAll = (req, res) => {
   const user_id = req.query.user_id;
   var condition = user_id ? { user_id: { [Op.like]: `%${user_id}%` } } : null;
 
-  Tutorial.findTitle({ where: condition })
+  Tutorial.findAll({ where: condition })
     .then(data => {
       res.send(data);
     })
@@ -65,7 +65,7 @@ exports.findTitle = (req, res) => {
 
 // Retrieve all Tutorials from the database.
 /*
-exports.findFrom = (req, res) => {
+exports.findAllFrom = (req, res) => {
   const user_id = req.body.from_port_code;
   var condition = from_port_code ? { user_id: { [Op.like]: `%${from_port_code}%` } } : null;
 
