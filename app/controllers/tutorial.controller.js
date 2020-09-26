@@ -5,7 +5,8 @@ const Op = db.Sequelize.Op;
 // Create and Save a new Tutorial
 exports.create = (req, res) => {
   // Validate request
-  if (!req.body.title) {
+  // 1つでも空白が許されないパラメータ
+  if (!(req.body.user_id&&req.body.to_port_code&&req.body.from_port_code&&req.body.allow_share_ride&&req.body.reservations_number&&req.body.departure_date&&(req.body.departure_time||req.body.arrival_time))) {
     res.status(400).send({
       message: "Content can not be empty!"
     });
@@ -14,9 +15,21 @@ exports.create = (req, res) => {
 
   // Create a Tutorial
   const tutorial = {
-    title: req.body.title,
-    description: req.body.description,
-    published: req.body.published ? req.body.published : false
+    user_id: req.body.user_id,
+    to_port_code: req.body.published ? req.body.published : false,
+    from_port_code: req.body.from_port_code,
+    allow_share_ride: req.body.allow_share_ride,
+    reservations_number: req.body.reservations_number,
+    departure_date: req.body.departure_date,
+    departure_time: req.body.departure_time ? req.body.departure_time : null,
+    arrival_time: req.body.arrival_time ? req.body.arrival_time : null,
+    reservation_status: 0,
+    price: null,
+    allocation_code: null,
+    cancel_status: 0,
+    captain_code: 0,
+    boat_code: 0,
+    taxi_company_code: 0
   };
 
   // Save Tutorial in the database
@@ -34,8 +47,8 @@ exports.create = (req, res) => {
 
 // Retrieve all Tutorials from the database.
 exports.findAll = (req, res) => {
-  const title = req.query.title;
-  var condition = title ? { title: { [Op.like]: `%${title}%` } } : null;
+  const user_id = req.query.user_id;
+  var condition = user_id ? { user_id: { [Op.like]: `%${user_id}%` } } : null;
 
   Tutorial.findAll({ where: condition })
     .then(data => {
@@ -132,7 +145,7 @@ exports.deleteAll = (req, res) => {
 };
 
 // find all published Tutorial
-exports.findAllPublished = (req, res) => {
+/* exports.findAllPublished = (req, res) => {
   Tutorial.findAll({ where: { published: true } })
     .then(data => {
       res.send(data);
@@ -143,4 +156,4 @@ exports.findAllPublished = (req, res) => {
           err.message || "Some error occurred while retrieving tutorials."
       });
     });
-};
+}; */
