@@ -16,7 +16,7 @@ exports.create = (req, res) => {
   // Create a Tutorial
   const tutorial = {
     user_id: req.body.user_id,
-    to_port_code: req.body.published ? req.body.published : false,
+    to_port_code: req.body.to_port_code,
     from_port_code: req.body.from_port_code,
     allow_share_ride: req.body.allow_share_ride,
     reservations_number: req.body.reservations_number,

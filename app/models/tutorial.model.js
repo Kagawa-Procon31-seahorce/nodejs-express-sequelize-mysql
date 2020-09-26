@@ -16,7 +16,7 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.INTEGER
     },
     departure_date: {
-      type: Sequelize.DATE
+      type: Sequelize.DATEONLY
     },
     departure_time: {
       type: Sequelize.TIME
