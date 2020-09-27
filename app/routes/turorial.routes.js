@@ -6,7 +6,7 @@ module.exports = app => {
   // Create a new Tutorial
   router.post("/", tutorials.create);
 
-  // Retrieve all Tutorials
+  // 検索系
   router.get("/", tutorials.findAllByUser);
 
   router.get("/", tutorials.findAllByPort);

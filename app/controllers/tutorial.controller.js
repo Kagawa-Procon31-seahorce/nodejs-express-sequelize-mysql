@@ -46,7 +46,7 @@ exports.create = (req, res) => {
     });
 };
 
-// Retrieve all Tutorials from the database.
+// ユーザidから絞り込み
 exports.findAllByUser = (req, res) => {
   const user_id = req.query.user_id;
   var condition = user_id ? { user_id: { [Op.like]: `%${user_id}%` } } : null;
@@ -62,7 +62,7 @@ exports.findAllByUser = (req, res) => {
     });
 };
 
-// Retrieve all Tutorials from the database.
+// 出発港から絞り込み
 exports.findAllByPort = (req, res) => {
   const from_port_code = req.query.from_port_code;
   var condition = from_port_code ? { from_port_code: { [Op.like]: `%${from_port_code}%` } } : null;
@@ -78,7 +78,7 @@ exports.findAllByPort = (req, res) => {
     });
 };
 
-// Retrieve all Tutorials from the database.
+// 出発日から絞り込み
 exports.findAllByDate = (req, res) => {
   const departure_time = req.body.departure_date;
   var condition = departure_date ? { departure_date: { [Op.like]: `%${departure_date}%` } } : null;
@@ -94,7 +94,7 @@ exports.findAllByDate = (req, res) => {
     });
 };
 
-// Retrieve all Tutorials from the database.
+// 出発時刻から絞り込み
 exports.findAllByTime = (req, res) => {
   const departure_time = req.body.departure_time;
   var condition = departure_time ? { departure_time: { [Op.like]: `%${departure_time}%` } } : null;
