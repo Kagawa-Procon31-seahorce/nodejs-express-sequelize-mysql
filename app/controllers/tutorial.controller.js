@@ -48,8 +48,8 @@ exports.create = (req, res) => {
 
 // Retrieve all Tutorials from the database.
 exports.findAllByUser = (req, res) => {
-  const user_id = req.query.user;
-  var condition = user_id ? { user_id: { [Op.like]: `%${user_id}%` } } : null;
+  const user_id = req.query.user_id;
+  var condition = user_id ? { user: { [Op.like]: `%${user_id}%` } } : null;
 
   Tutorial.findAllByUser({ where: condition })
     .then(data => {
@@ -65,8 +65,8 @@ exports.findAllByUser = (req, res) => {
 
 // Retrieve all Tutorials from the database.
 exports.findAllByPort = (req, res) => {
-  const from_port_code = req.query.from;
-  var condition = from_port_code ? { from_port_code: { [Op.like]: `%${from_port_code}%` } } : null;
+  const from_port_code = req.query.from_port_code;
+  var condition = from_port_code ? { from: { [Op.like]: `%${from_port_code}%` } } : null;
 
   Tutorial.findAllByPort({ where: condition })
     .then(data => {
