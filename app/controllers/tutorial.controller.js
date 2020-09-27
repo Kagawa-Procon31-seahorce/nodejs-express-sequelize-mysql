@@ -78,6 +78,7 @@ exports.findAllByPort = (req, res) => {
     });
 };
 
+/*
 // 出発日から絞り込み
 exports.findAllByDate = (req, res) => {
   const departure_time = req.body.departure_date;
@@ -93,6 +94,7 @@ exports.findAllByDate = (req, res) => {
       });
     });
 };
+*/
 
 // 出発時刻から絞り込み
 exports.findAllByTime = (req, res) => {
