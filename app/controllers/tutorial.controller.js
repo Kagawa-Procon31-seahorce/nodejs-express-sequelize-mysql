@@ -96,9 +96,11 @@ exports.findAllByDate = (req, res) => {
 
 // 出発時刻から絞り込み
 exports.findAllByTime = (req, res) => {
-  const departure_time = req.body.departure_time;
-  var condition = departure_time ? { departure_time: { [Op.like]: `%${departure_time}%` } } : null;
-  Tutorial.findAllByTime({ where: condition })
+  const TimeMin = req.body.TimeMin;
+  const TimeMax = req.body.TimeMax;
+  var TimeMin = TimeMin ? { departure_date: { [Op.like]: `%${departure_date}%` } } : null;
+  var TimeMax = TimeMax ? { departure_date: { [Op.like]: `%${departure_date}%` } } : null;
+  Tutorial.findAllByTime({ where: [Op.between] [TimeMin, TimeMax] })
     .then(data => {
       res.send(data);
     })
