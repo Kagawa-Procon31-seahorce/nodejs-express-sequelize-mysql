@@ -79,6 +79,7 @@ exports.findAllByPort = (req, res) => {
 };
 
 // 出発時刻から絞り込み
+/*
 exports.findAllByTime = (req, res) => {
   const departure_time = req.query.departure_time;
   var condition = departure_time ? { departure_time: { [Op.like]: `%${departure_time}%` } } : null;
@@ -93,6 +94,8 @@ exports.findAllByTime = (req, res) => {
       });
     });
 };
+*/
+
 // Find a single Tutorial with an id
 exports.findOne = (req, res) => {
   const id = req.params.id;
