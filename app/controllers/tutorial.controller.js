@@ -95,6 +95,7 @@ exports.findAllByDate = (req, res) => {
 };
 
 // 出発時刻から絞り込み
+/*
 exports.findAllByTime = (req, res) => {
   const TimeMin = req.query.TimeMin;
   const TimeMax = req.query.TimeMax;
@@ -111,6 +112,7 @@ exports.findAllByTime = (req, res) => {
       });
     });
 };
+*/
 
 // Find a single Tutorial with an id
 exports.findOne = (req, res) => {
