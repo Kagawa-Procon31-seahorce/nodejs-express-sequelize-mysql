@@ -78,6 +78,38 @@ exports.findAllByPort = (req, res) => {
     });
 };
 
+// Retrieve all Tutorials from the database.
+exports.findAllByDate = (req, res) => {
+  const departure_time = req.body.departure_date;
+  var condition = departure_date ? { departure_date: { [Op.like]: `%${departure_date}%` } } : null;
+  Tutorial.findAllByDate({ where: condition })
+    .then(data => {
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving tutorials."
+      });
+    });
+};
+
+// Retrieve all Tutorials from the database.
+exports.findAllByTime = (req, res) => {
+  const departure_time = req.body.departure_time;
+  var condition = departure_time ? { departure_time: { [Op.like]: `%${departure_time}%` } } : null;
+  Tutorial.findAllByTime({ where: condition })
+    .then(data => {
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving tutorials."
+      });
+    });
+};
+
 // Find a single Tutorial with an id
 exports.findOne = (req, res) => {
   const id = req.params.id;
