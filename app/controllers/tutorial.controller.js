@@ -6,7 +6,7 @@ const Op = db.Sequelize.Op;
 exports.create = (req, res) => {
   // Validate request
   // 1つでも空白が許されないパラメータ
-  if (!(req.body.user_id&&req.body.to_port_code&&req.body.from_port_code&&req.body.allow_share_ride&&req.body.reservations_number&&req.body.departure_date&&(req.body.departure_time||req.body.arrival_time))) {
+  if (!(req.body.user_id&&req.body.to_port_code&&req.body.from_port_code&&req.body.reservations_number&&req.body.departure_date&&(req.body.departure_time||req.body.arrival_time))) {
     res.status(400).send({
       message: "Content can not be empty!"
     });
@@ -19,7 +19,7 @@ exports.create = (req, res) => {
     user_id: req.body.user_id,
     to_port_code: req.body.to_port_code,
     from_port_code: req.body.from_port_code,
-    allow_share_ride: req.body.allow_share_ride,
+    allow_share_ride: req.body.allow_share_ride ? req.body.allow_share_ride : false,
     reservations_number: req.body.reservations_number,
     departure_date: req.body.departure_date,
     departure_time: req.body.departure_time ? req.body.departure_time : null,
