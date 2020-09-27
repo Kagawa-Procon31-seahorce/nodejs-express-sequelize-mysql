@@ -78,12 +78,12 @@ exports.findAllByPort = (req, res) => {
     });
 };
 
+// 出発時刻から絞り込み
 /*
-// 出発日から絞り込み
-exports.findAllByDate = (req, res) => {
-  const departure_time = req.body.departure_date;
-  var condition = departure_date ? { departure_date: { [Op.like]: `%${departure_date}%` } } : null;
-  Tutorial.findAllByDate({ where: condition })
+exports.findAllByTime = (req, res) => {
+  const departure_time = req.query.departure_time;
+  var condition = departure_time ? { departure_time: { [Op.like]: `%${departure_time}%` } } : null;
+  Tutorial.findAll({ where: condition })
     .then(data => {
       res.send(data);
     })
@@ -95,22 +95,6 @@ exports.findAllByDate = (req, res) => {
     });
 };
 */
-
-// 出発時刻から絞り込み
-exports.findAllByTime = (req, res) => {
-  const departure_time = req.body.departure_time;
-  var condition = departure_time ? { departure_time: { [Op.like]: `%${departure_time}%` } } : null;
-  Tutorial.findAllByTime({ where: condition })
-    .then(data => {
-      res.send(data);
-    })
-    .catch(err => {
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while retrieving tutorials."
-      });
-    });
-};
 
 // Find a single Tutorial with an id
 exports.findOne = (req, res) => {
