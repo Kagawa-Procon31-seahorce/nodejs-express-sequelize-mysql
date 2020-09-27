@@ -47,7 +47,7 @@ exports.create = (req, res) => {
 };
 
 // Retrieve all Tutorials from the database.
-exports.findAll = (req, res) => {
+exports.findAllByUser = (req, res) => {
   const user_id = req.query.user_id;
   var condition = user_id ? { user_id: { [Op.like]: `%${user_id}%` } } : null;
 
@@ -64,7 +64,7 @@ exports.findAll = (req, res) => {
 };
 
 // Retrieve all Tutorials from the database.
-exports.findAll = (req, res) => {
+exports.findAllByPort = (req, res) => {
   const from_port_code = req.query.user_id;
   var condition = from_port_code ? { from_port_code: { [Op.like]: `%${from_port_code}%` } } : null;
 
