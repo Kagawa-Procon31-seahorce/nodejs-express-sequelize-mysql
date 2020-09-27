@@ -98,8 +98,8 @@ exports.findAllByDate = (req, res) => {
 exports.findAllByTime = (req, res) => {
   const TimeMin = req.body.TimeMin;
   const TimeMax = req.body.TimeMax;
-  var TimeMin = TimeMin ? { departure_date: { [Op.like]: `%${departure_date}%` } } : null;
-  var TimeMax = TimeMax ? { departure_date: { [Op.like]: `%${departure_date}%` } } : null;
+  var TimeMin = TimeMin ? { departure_date: `%${departure_date}%` } : null;
+  var TimeMax = TimeMax ? { departure_date: `%${departure_date}%` } : null;
   Tutorial.findAllByTime({ where: [Op.between] [TimeMin, TimeMax] })
     .then(data => {
       res.send(data);
