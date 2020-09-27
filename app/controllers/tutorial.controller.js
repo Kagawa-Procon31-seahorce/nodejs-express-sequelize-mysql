@@ -47,11 +47,11 @@ exports.create = (req, res) => {
 };
 
 // Retrieve all Tutorials from the database.
-exports.findAll = (req, res) => {
+exports.findByUser = (req, res) => {
   const user_id = req.query.user_id;
   var condition = user_id ? { user_id: { [Op.like]: `%${user_id}%` } } : null;
 
-  Tutorial.findAll({ where: condition })
+  Tutorial.findByUser({ where: condition })
     .then(data => {
       res.send(data);
     })
