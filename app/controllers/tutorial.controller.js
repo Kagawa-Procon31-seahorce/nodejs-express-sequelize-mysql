@@ -78,7 +78,7 @@ exports.findAllByUser = (req, res) => {
 
 // Retrieve all Tutorials from the database.
 exports.findAllByPort = (req, res) => {
-  const from_port_code = req.query.from_port_code;
+  const from_port_code = req.query.code;
   var condition = from_port_code ? { from_port_code: { [Op.like]: `%${from_port_code}%` } } : null;
 
   Tutorial.findAll({ where: condition })
@@ -95,7 +95,7 @@ exports.findAllByPort = (req, res) => {
 
 // Retrieve all Tutorials from the database.
 exports.findAllByTime = (req, res) => {
-  const departure_time = req.query.departure_time;
+  const departure_time = req.query.time;
   var condition = departure_time ? { departure_time: { [Op.like]: `%${departure_time}%` } } : null;
 
   Tutorial.findAll({ where: condition })
@@ -112,7 +112,7 @@ exports.findAllByTime = (req, res) => {
 
 // Retrieve all Tutorials from the database.
 exports.findAllByDate = (req, res) => {
-  const departure_date = req.query.departure_date;
+  const departure_date = req.query.date;
   var condition = departure_date ? { departure_date: { [Op.like]: `%${departure_date}%` } } : null;
 
   Tutorial.findAll({ where: condition })
