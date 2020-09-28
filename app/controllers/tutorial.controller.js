@@ -61,7 +61,7 @@ exports.brouse = (req, res) => {
 
 // Retrieve all Tutorials from the database.
 exports.findAllByUser = (req, res) => {
-  const user_id = req.query.user_id;
+  const user_id = req.query.id;
   var condition = user_id ? { user_id: { [Op.like]: `%${user_id}%` } } : null;
 
   Tutorial.findAll({ where: condition })
