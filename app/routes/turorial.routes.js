@@ -12,7 +12,7 @@ module.exports = app => {
   router.get("/user", tutorials.findAllByUser);
   router.get("/port", tutorials.findAllByPort);
   router.get("/time", tutorials.findAllByTime);
-  router.get("/time", tutorials.findAllByDate);
+  router.get("/date", tutorials.findAllByDate);
 
   // Retrieve all published Tutorials
   //router.get("/published", tutorials.findAllPublished);
