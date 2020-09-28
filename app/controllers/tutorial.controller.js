@@ -63,6 +63,7 @@ exports.findAllByUser = (req, res) => {
     });
 };
 
+/*
 // Retrieve all Tutorials from the database.
 exports.findAllByPort = (req, res) => {
   const from_port_code = req.query.from_port_code;
@@ -79,9 +80,9 @@ exports.findAllByPort = (req, res) => {
       });
     });
 };
+*/
 
 // Retrieve all Tutorials from the database.
-/*
 exports.findAllByTime = (req, res) => {
   const departure_time = req.query.departure_time;
   var condition = departure_time ? { departure_time: { [Op.like]: `%${departure_time}%` } } : null;
@@ -97,7 +98,6 @@ exports.findAllByTime = (req, res) => {
       });
     });
 };
-*/
 
 // Find a single Tutorial with an id
 exports.findOne = (req, res) => {
