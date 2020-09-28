@@ -113,7 +113,7 @@ exports.findAllByTime = (req, res) => {
 // Retrieve all Tutorials from the database.
 exports.findAllByDate = (req, res) => {
   const departure_date = req.query.departure_date;
-  var condition = departure_date ? { departure_time: { [Op.like]: `%${departure_date}%` } } : null;
+  var condition = departure_date ? { departure_date: { [Op.like]: `%${departure_date}%` } } : null;
 
   Tutorial.findAll({ where: condition })
     .then(data => {
