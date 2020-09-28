@@ -47,7 +47,7 @@ exports.create = (req, res) => {
 };
 
 exports.brouse = (req, res) => {
-  Tutorial.findAll("")
+  Tutorial.findAll({ where: "" })
   .then(data => {
     res.send(data);
   })
