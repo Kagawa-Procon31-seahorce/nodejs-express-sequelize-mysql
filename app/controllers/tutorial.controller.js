@@ -51,7 +51,7 @@ exports.findAll = (req, res) => {
   const user_id = req.query.user_id;
   var condition = user_id ? { user_id: { [Op.like]: `%${user_id}%` } } : null;
 
-  Tutorial.findAllByUser({ where: condition })
+  Tutorial.findAll({ where: condition })
     .then(data => {
       res.send(data);
     })
