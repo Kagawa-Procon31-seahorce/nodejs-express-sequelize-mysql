@@ -47,7 +47,7 @@ exports.create = (req, res) => {
 };
 
 // Retrieve all Tutorials from the database.
-exports.findAll = (req, res) => {
+exports.findAllByUser = (req, res) => {
   const user_id = req.query.user_id;
   var condition = user_id ? { user_id: { [Op.like]: `%${user_id}%` } } : null;
 
@@ -63,13 +63,12 @@ exports.findAll = (req, res) => {
     });
 };
 
-/*
 // Retrieve all Tutorials from the database.
 exports.findAllByPort = (req, res) => {
   const from_port_code = req.query.from_port_code;
   var condition = from_port_code ? { from_port_code: { [Op.like]: `%${from_port_code}%` } } : null;
 
-  Tutorial.findAllByPort({ where: condition })
+  Tutorial.findAll({ where: condition })
     .then(data => {
       res.send(data);
     })
@@ -80,15 +79,13 @@ exports.findAllByPort = (req, res) => {
       });
     });
 };
-*/
 
 // Retrieve all Tutorials from the database.
-/*
 exports.findAllByTime = (req, res) => {
   const departure_time = req.query.departure_time;
   var condition = departure_time ? { departure_time: { [Op.like]: `%${departure_time}%` } } : null;
 
-  Tutorial.findAllByTime({ where: condition })
+  Tutorial.findAll({ where: condition })
     .then(data => {
       res.send(data);
     })
@@ -99,7 +96,6 @@ exports.findAllByTime = (req, res) => {
       });
     });
 };
-*/
 
 // Find a single Tutorial with an id
 exports.findOne = (req, res) => {
