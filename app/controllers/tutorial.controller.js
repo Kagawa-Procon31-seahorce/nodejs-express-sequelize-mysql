@@ -6,7 +6,7 @@ const Op = db.Sequelize.Op;
 exports.create = (req, res) => {
   // Validate request
   // 1つでも空白が許されないパラメータ
-  if (!(req.body.user_id&&req.body.to_port_code&&req.body.from_port_code&&req.body.allow_share_ride&&req.body.reservations_number&&req.body.departure_date&&(req.body.departure_time||req.body.arrival_time))) {
+  if (!(req.body.user_id&&req.body.to_port_code&&req.body.from_port_code&&req.body.reservations_number&&req.body.departure_date&&(req.body.departure_time||req.body.arrival_time))) {
     res.status(400).send({
       message: "Content can not be empty!"
     });
@@ -19,7 +19,7 @@ exports.create = (req, res) => {
     user_id: req.body.user_id,
     to_port_code: req.body.to_port_code,
     from_port_code: req.body.from_port_code,
-    allow_share_ride: req.body.allow_share_ride,
+    allow_share_ride: req.body.allow_share_ride ? req.body.allow_share_ride : false,
     reservations_number: req.body.reservations_number,
     departure_date: req.body.departure_date,
     departure_time: req.body.departure_time ? req.body.departure_time : null,
@@ -46,59 +46,12 @@ exports.create = (req, res) => {
     });
 };
 
-// ユーザidから絞り込み
-exports.findAllByUser = (req, res) => {
+// Retrieve all Tutorials from the database.
+exports.findAll = (req, res) => {
   const user_id = req.query.user_id;
   var condition = user_id ? { user_id: { [Op.like]: `%${user_id}%` } } : null;
+
   Tutorial.findAll({ where: condition })
-    .then(data => {
-      res.send(data);
-    })
-    .catch(err => {
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while retrieving tutorials."
-      });
-    });
-};
-
-// 出発港から絞り込み
-exports.findAllByPort = (req, res) => {
-  const from_port_code = req.query.from_port_code;
-  var condition = from_port_code ? { from_port_code: { [Op.like]: `%${from_port_code}%` } } : null;
-  Tutorial.findAll({ where: condition })
-    .then(data => {
-      res.send(data);
-    })
-    .catch(err => {
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while retrieving tutorials."
-      });
-    });
-};
-
-// 出発日から絞り込み
-exports.findAllByDate = (req, res) => {
-  const departure_time = req.body.departure_date;
-  var condition = departure_date ? { departure_date: { [Op.like]: `%${departure_date}%` } } : null;
-  Tutorial.findAllByDate({ where: condition })
-    .then(data => {
-      res.send(data);
-    })
-    .catch(err => {
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while retrieving tutorials."
-      });
-    });
-};
-
-// 出発時刻から絞り込み
-exports.findAllByTime = (req, res) => {
-  const departure_time = req.body.departure_time;
-  var condition = departure_time ? { departure_time: { [Op.like]: `%${departure_time}%` } } : null;
-  Tutorial.findAllByTime({ where: condition })
     .then(data => {
       res.send(data);
     })
