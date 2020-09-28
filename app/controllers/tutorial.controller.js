@@ -46,7 +46,8 @@ exports.create = (req, res) => {
     });
 };
 
-exports.brouse(tutorial)
+exports.brouse = (req, res) => {
+  Tutorial.findAll("")
   .then(data => {
     res.send(data);
   })
@@ -56,6 +57,7 @@ exports.brouse(tutorial)
         err.message || "Some error occurred while retrieving tutorials."
     });
   });
+}
 
 // Retrieve all Tutorials from the database.
 exports.findAllByUser = (req, res) => {
