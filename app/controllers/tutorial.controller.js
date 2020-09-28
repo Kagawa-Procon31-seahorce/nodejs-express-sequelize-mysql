@@ -46,6 +46,17 @@ exports.create = (req, res) => {
     });
 };
 
+exports.brouse(tutorial)
+  .then(data => {
+    res.send(data);
+  })
+  .catch(err => {
+    res.status(500).send({
+      message:
+        err.message || "Some error occurred while retrieving tutorials."
+    });
+  });
+
 // Retrieve all Tutorials from the database.
 exports.findAllByUser = (req, res) => {
   const user_id = req.query.user_id;
