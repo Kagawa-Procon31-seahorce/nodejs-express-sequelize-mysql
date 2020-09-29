@@ -128,7 +128,7 @@ exports.findAllByDate = (req, res) => {
 };
 
 // Find a single Tutorial with an id
-exports.findByCode = (req, res) => {
+exports.findByAllocation = (req, res) => {
   const allocation_code = req.params.allocation_code;
 
   Tutorial.findByPk(allocation_code)
@@ -143,11 +143,11 @@ exports.findByCode = (req, res) => {
 };
 
 // Update a Tutorial by the id in the request
-exports.update = (req, res) => {
-  const id = req.params.id;
+exports.updateAllocation = (req, res) => {
+  const allocation_code = req.params.allocation_code;
 
   Tutorial.update(req.body, {
-    where: { id: id }
+    where: { allocation_code: allocation_code }
   })
     .then(num => {
       if (num == 1) {
