@@ -144,7 +144,7 @@ exports.findById = (req, res) => {
 exports.findByAllocation = (req, res) => {
   const allocationCode = req.params.allocation_code;
 
-  Tutorial.findByPk(allocationCode)
+  Tutorial.findAll(allocationCode)
     .then(data => {
       res.send(data);
     })
