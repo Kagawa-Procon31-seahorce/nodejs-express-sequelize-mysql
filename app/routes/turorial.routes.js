@@ -18,7 +18,7 @@ module.exports = app => {
   //router.get("/published", tutorials.findAllPublished);
 
   // Retrieve a single Tutorial with id
-  router.get("/:id", tutorials.findOne);
+  router.get("/allocation_code", tutorials.findByCode);
 
   // Update a Tutorial with id
   router.put("/:id", tutorials.update);

@@ -128,10 +128,10 @@ exports.findAllByDate = (req, res) => {
 };
 
 // Find a single Tutorial with an id
-exports.findOne = (req, res) => {
-  const id = req.params.id;
+exports.findByCode = (req, res) => {
+  const allocation_code = req.params.allocation_code;
 
-  Tutorial.findByPk(id)
+  Tutorial.findByPk(allocation_code)
     .then(data => {
       res.send(data);
     })
