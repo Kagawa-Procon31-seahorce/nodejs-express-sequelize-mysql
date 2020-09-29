@@ -156,7 +156,31 @@ exports.findByAllocation = (req, res) => {
 };
 
 // Update a Tutorial by the id in the request
-exports.updateAllocation = (req, res) => {
+exports.updateById = (req, res) => {
+  const id = req.params.id;
+
+  Tutorial.update(req.body, {
+    where: { id: id }
+  })
+    .then(num => {
+      if (num == 1) {
+        res.send({
+          message: "Tutorial was updated successfully."
+        });
+      } else {
+        res.send({
+          message: `Cannot update Tutorial with id=${id}. Maybe Tutorial was not found or req.body is empty!`
+        });
+      }
+    })
+    .catch(err => {
+      res.status(500).send({
+        message: "Error updating Tutorial with id=" + id
+      });
+    });
+};
+
+exports.updateByAllocation = (req, res) => {
   const allocation_code = req.params.allocation_code;
 
   Tutorial.update(req.body, {
