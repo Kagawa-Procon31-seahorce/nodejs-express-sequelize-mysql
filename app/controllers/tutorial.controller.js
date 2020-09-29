@@ -142,15 +142,17 @@ exports.findById = (req, res) => {
 };
 
 exports.findByAllocation = (req, res) => {
-  const allocationCode = req.params.allocation_code;
+  const allocation_code = req.query.allocation_code;
+  var condition = allocation_code ? { allocation_code: { [Op.eq]: `%${allocation_code}%` } } : null;
 
-  Tutorial.findAll(allocationCode)
+  Tutorial.findAll({ where: condition })
     .then(data => {
       res.send(data);
     })
     .catch(err => {
       res.status(500).send({
-        message: "Error retrieving Tutorial with id=" + allocationCode
+        message:
+          err.message || "Some error occurred while retrieving tutorials."
       });
     });
 };
