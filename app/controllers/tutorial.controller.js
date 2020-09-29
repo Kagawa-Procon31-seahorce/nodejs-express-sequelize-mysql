@@ -127,6 +127,20 @@ exports.findAllByDate = (req, res) => {
     });
 };
 
+exports.findById = (req, res) => {
+  const id = req.params.id;
+
+  Tutorial.findByPk(id)
+    .then(data => {
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message: "Error retrieving Tutorial with id=" + id
+      });
+    });
+};
+
 // Find a single Tutorial with an id
 exports.findByAllocation = (req, res) => {
   const allocation_code = req.params.allocation_code;
@@ -137,7 +151,7 @@ exports.findByAllocation = (req, res) => {
     })
     .catch(err => {
       res.status(500).send({
-        message: "Error retrieving Tutorial with id=" + id
+        message: "Error retrieving Tutorial with id=" + allocation_code
       });
     });
 };
@@ -156,13 +170,13 @@ exports.updateAllocation = (req, res) => {
         });
       } else {
         res.send({
-          message: `Cannot update Tutorial with id=${id}. Maybe Tutorial was not found or req.body is empty!`
+          message: `Cannot update Tutorial with id=${allocation_code}. Maybe Tutorial was not found or req.body is empty!`
         });
       }
     })
     .catch(err => {
       res.status(500).send({
-        message: "Error updating Tutorial with id=" + id
+        message: "Error updating Tutorial with id=" + allocation_code
       });
     });
 };
