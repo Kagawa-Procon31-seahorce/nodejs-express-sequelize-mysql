@@ -142,15 +142,15 @@ exports.findById = (req, res) => {
 };
 
 exports.findByAllocation = (req, res) => {
-  const allocation_code = req.params.allocation_code;
+  const allocationCode = req.params.allocation_code;
 
-  Tutorial.findByPk(allocation_code)
+  Tutorial.findByPk(allocationCode)
     .then(data => {
       res.send(data);
     })
     .catch(err => {
       res.status(500).send({
-        message: "Error retrieving Tutorial with id=" + allocation_code
+        message: "Error retrieving Tutorial with id=" + allocationCode
       });
     });
 };
