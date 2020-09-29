@@ -13,13 +13,13 @@ module.exports = app => {
   router.get("/port", tutorials.findAllByPort);
   router.get("/time", tutorials.findAllByTime);
   router.get("/date", tutorials.findAllByDate);
+  router.get("/allocation", tutorials.findByAllocation);
 
   // Retrieve all published Tutorials
   //router.get("/published", tutorials.findAllPublished);
 
   // Retrieve a single Tutorial with id
   router.get("/id/:id", tutorials.findById);
-  router.get("/allocation/:allocation_code", tutorials.findByAllocation);
 
   // Update a Tutorial with id
   router.put("/id/:id", tutorials.updateById);
