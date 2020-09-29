@@ -187,7 +187,7 @@ exports.updateByAllocation = (req, res) => {
     where: { allocation_code: allocation_code }
   })
     .then(num => {
-      if (num == 1) {
+      if (num >= 1) {
         res.send({
           message: "Tutorial was updated successfully."
         });
