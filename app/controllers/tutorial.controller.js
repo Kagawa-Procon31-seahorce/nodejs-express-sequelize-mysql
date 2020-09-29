@@ -142,9 +142,8 @@ exports.findById = (req, res) => {
 };
 
 exports.findByAllocation = (req, res) => {
-  const allocation_code = req.query.allocation_code;
 
-  Tutorial.findAll({ where: {allocation_code: `%${allocation_code}%` } })
+  Tutorial.findAll({ where: {allocation_code: req.query.allocation_code } })
     .then(data => {
       res.send(data);
     })
