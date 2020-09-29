@@ -18,10 +18,10 @@ module.exports = app => {
   //router.get("/published", tutorials.findAllPublished);
 
   // Retrieve a single Tutorial with id
-  router.get("/:allocation_code", tutorials.findByAllocation);
+  router.get("/allocation/:allocation_code", tutorials.findByAllocation);
 
   // Update a Tutorial with id
-  router.put("/:allocation_code", tutorials.updateAllocation);
+  router.put("/allocation/:allocation_code", tutorials.updateAllocation);
 
   // Delete a Tutorial with id
   router.delete("/:id", tutorials.delete);
