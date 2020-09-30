@@ -141,9 +141,26 @@ exports.findById = (req, res) => {
     });
 };
 
+// allocation_codeで検索
 exports.findByAllocation = (req, res) => {
 
   Tutorial.findAll({ where: {allocation_code: req.query.allocation_code } })
+    .then(data => {
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving tutorials."
+      });
+    });
+};
+
+
+// captain_codeで検索
+exports.findByCaptain_code = (req, res) => {
+
+  Tutorial.findAll({ where: {captain_code: req.query.captain_code } })
     .then(data => {
       res.send(data);
     })

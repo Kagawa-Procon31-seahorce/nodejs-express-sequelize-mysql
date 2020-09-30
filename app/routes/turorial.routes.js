@@ -14,6 +14,7 @@ module.exports = app => {
   router.get("/time", tutorials.findAllByTime);
   router.get("/date", tutorials.findAllByDate);
   router.get("/allocation", tutorials.findByAllocation);
+  router.get("/captain_code", tutorials.findByCaptain_code);
 
   // Retrieve all published Tutorials
   //router.get("/published", tutorials.findAllPublished);
