@@ -25,7 +25,7 @@ module.exports = app => {
   // Update a Tutorial with id
   router.put("/id/:id", tutorials.updateById);
   // router.put("/allocation/:allocation_code", tutorials.updateByAllocation);
-  router.put("/allocation", tutorials.updateByAllocation);
+  router.put("/allocation/:allocation_code", tutorials.updateByAllocation);
 
   // Delete a Tutorial with id
   router.delete("/:id", tutorials.delete);
